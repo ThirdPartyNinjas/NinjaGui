@@ -1,5 +1,5 @@
-#ifndef NINJAGUI_BUTTON_HPP
-#define NINJAGUI_BUTTON_HPP
+#ifndef NINJAGUI_IMAGE_HPP
+#define NINJAGUI_IMAGE_HPP
 
 #include <memory>
 
@@ -23,4 +23,4 @@ namespace NinjaGui
     };
 }
 
-#endif//NINJAGUI_BUTTON_HPP
+#endif//NINJAGUI_IMAGE_HPP

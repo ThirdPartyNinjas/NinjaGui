@@ -19,9 +19,13 @@ namespace NinjaGui
         
         NinjaParty::Vector2 dimensions;
         
+        bool isActive = true;
+        bool isEnabled = true;
+        
         NinjaParty::Texture *texture;
         NinjaParty::TextureRegion upRegion;
         NinjaParty::TextureRegion downRegion;
+        NinjaParty::TextureRegion inactiveRegion;
     };
     
     Button::Button(int buttonId,
@@ -29,6 +33,16 @@ namespace NinjaGui
                    NinjaParty::Texture *texture,
                    NinjaParty::TextureRegion upRegion,
                    NinjaParty::TextureRegion downRegion)
+    : Button(buttonId, position, texture, upRegion, downRegion, upRegion)
+    {
+    }
+
+    Button::Button(int buttonId,
+                   const NinjaParty::Vector2 &position,
+                   NinjaParty::Texture *texture,
+                   NinjaParty::TextureRegion upRegion,
+                   NinjaParty::TextureRegion downRegion,
+                   NinjaParty::TextureRegion inactiveRegion)
     : pimpl(new impl())
     {
         Position() = position;
@@ -38,16 +52,46 @@ namespace NinjaGui
         pimpl->texture = texture;
         pimpl->upRegion = upRegion;
         pimpl->downRegion = downRegion;
+        pimpl->inactiveRegion = inactiveRegion;
     }
     
     Button::~Button()
     {
     }
     
+    bool Button::IsActive() const
+    {
+        return pimpl->isActive;
+    }
+    
+    void Button::SetActive(bool active)
+    {
+        pimpl->isActive = active;
+        
+        if(!active)
+            pimpl->buttonState = ButtonState::Up;
+    }
+
+    bool Button::IsEnabled() const
+    {
+        return pimpl->isEnabled;
+    }
+    
+    void Button::SetEnabled(bool enabled)
+    {
+        pimpl->isEnabled = enabled;
+
+        if(!enabled)
+            pimpl->buttonState = ButtonState::Up;
+}
+
     bool Button::ProcessEvent(const std::shared_ptr<NinjaParty::IEvent> &event,
                               const bool hasFocusIn,
                               bool &hasFocusOut)
     {
+        if(!pimpl->isEnabled || !pimpl->isActive)
+            return false;
+        
 		NinjaParty::Vector2 absolutePosition = GetAbsolutePosition();
         
         switch(pimpl->buttonState)
@@ -135,9 +179,31 @@ namespace NinjaGui
     
     void Button::Draw(NinjaParty::SpriteBatch *spriteBatch)
     {
+        NinjaParty::TextureRegion textureRegion;
+        
+        if(pimpl->isActive)
+            textureRegion = pimpl->buttonState == ButtonState::Up ? pimpl->upRegion : pimpl->downRegion;
+        else
+            textureRegion = pimpl->inactiveRegion;
+        
         spriteBatch->Draw(pimpl->texture,
-                          pimpl->buttonState == ButtonState::Up ? pimpl->upRegion : pimpl->downRegion,
+                          textureRegion,
                           GetAbsolutePosition(),
                           NinjaParty::Vector2(0.5f));
+    }
+    
+    void Button::SetUpRegion(const NinjaParty::TextureRegion &region)
+    {
+        pimpl->upRegion = region;
+    }
+    
+    void Button::SetDownRegion(const NinjaParty::TextureRegion &region)
+    {
+        pimpl->downRegion = region;
+    }
+    
+    void Button::SetInactiveRegion(const NinjaParty::TextureRegion &region)
+    {
+        pimpl->inactiveRegion = region;
     }
 }

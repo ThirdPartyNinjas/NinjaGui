@@ -12,6 +12,7 @@
 		3007F30D18FDDFB4007C5D42 /* Control.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3007F30918FDDFB4007C5D42 /* Control.cpp */; };
 		3007F30E18FDDFB4007C5D42 /* Image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3007F30A18FDDFB4007C5D42 /* Image.cpp */; };
 		3007F30F18FDDFB4007C5D42 /* UserInterfaceManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3007F30B18FDDFB4007C5D42 /* UserInterfaceManager.cpp */; };
+		3007F32618FE2FF4007C5D42 /* Label.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3007F32518FE2FF4007C5D42 /* Label.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -38,6 +39,8 @@
 		3007F31418FDE173007C5D42 /* Image.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = Image.hpp; path = NinjaGui/Image.hpp; sourceTree = "<group>"; };
 		3007F31518FDE173007C5D42 /* NullControl.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = NullControl.hpp; path = NinjaGui/NullControl.hpp; sourceTree = "<group>"; };
 		3007F31618FDE173007C5D42 /* UserInterfaceManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = UserInterfaceManager.hpp; path = NinjaGui/UserInterfaceManager.hpp; sourceTree = "<group>"; };
+		3007F32518FE2FF4007C5D42 /* Label.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Label.cpp; sourceTree = "<group>"; };
+		3007F32718FE322F007C5D42 /* Label.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = Label.hpp; path = NinjaGui/Label.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +87,7 @@
 				3007F31218FDE173007C5D42 /* Button.hpp */,
 				3007F31318FDE173007C5D42 /* Control.hpp */,
 				3007F31418FDE173007C5D42 /* Image.hpp */,
+				3007F32718FE322F007C5D42 /* Label.hpp */,
 				3007F31518FDE173007C5D42 /* NullControl.hpp */,
 				3007F31618FDE173007C5D42 /* UserInterfaceManager.hpp */,
 			);
@@ -97,6 +101,7 @@
 				3007F30818FDDFB4007C5D42 /* Button.cpp */,
 				3007F30918FDDFB4007C5D42 /* Control.cpp */,
 				3007F30A18FDDFB4007C5D42 /* Image.cpp */,
+				3007F32518FE2FF4007C5D42 /* Label.cpp */,
 				3007F30B18FDDFB4007C5D42 /* UserInterfaceManager.cpp */,
 			);
 			name = Source;
@@ -129,7 +134,7 @@
 		3007F2D018FDDEC1007C5D42 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Third Party Ninjas";
 			};
 			buildConfigurationList = 3007F2D318FDDEC1007C5D42 /* Build configuration list for PBXProject "NinjaGui" */;
@@ -155,6 +160,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3007F30F18FDDFB4007C5D42 /* UserInterfaceManager.cpp in Sources */,
+				3007F32618FE2FF4007C5D42 /* Label.cpp in Sources */,
 				3007F30E18FDDFB4007C5D42 /* Image.cpp in Sources */,
 				3007F30C18FDDFB4007C5D42 /* Button.cpp in Sources */,
 				3007F30D18FDDFB4007C5D42 /* Control.cpp in Sources */,
@@ -168,7 +174,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -212,7 +217,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -251,6 +255,7 @@
 			buildSettings = {
 				DSTROOT = /tmp/NinjaGui.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -262,6 +267,7 @@
 			buildSettings = {
 				DSTROOT = /tmp/NinjaGui.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

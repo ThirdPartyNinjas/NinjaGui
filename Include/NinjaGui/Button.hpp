@@ -34,7 +34,19 @@ namespace NinjaGui
                NinjaParty::Texture *texture,
                NinjaParty::TextureRegion upRegion,
                NinjaParty::TextureRegion downRegion);
+        Button(int buttonId,
+               const NinjaParty::Vector2 &position,
+               NinjaParty::Texture *texture,
+               NinjaParty::TextureRegion upRegion,
+               NinjaParty::TextureRegion downRegion,
+               NinjaParty::TextureRegion inactiveRegion);
         ~Button();
+        
+        bool IsActive() const;
+        void SetActive(bool active);
+        
+        bool IsEnabled() const;
+        void SetEnabled(bool enabled);
 
         virtual bool ProcessEvent(const std::shared_ptr<NinjaParty::IEvent> &event,
                                   const bool hasFocusIn,
@@ -45,6 +57,10 @@ namespace NinjaGui
                             bool &hasFocusOut);
         
         virtual void Draw(NinjaParty::SpriteBatch *spriteBatch);
+        
+        void SetUpRegion(const NinjaParty::TextureRegion &region);
+        void SetDownRegion(const NinjaParty::TextureRegion &region);
+        void SetInactiveRegion(const NinjaParty::TextureRegion &region);
         
     private:
         struct impl;

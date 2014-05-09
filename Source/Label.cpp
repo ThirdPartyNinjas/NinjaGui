@@ -49,4 +49,9 @@ namespace NinjaGui
     {
         return pimpl->text;
     }
+    
+    NinjaParty::Color& Label::Color()
+    {
+        return pimpl->color;
+    }
 }

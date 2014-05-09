@@ -25,6 +25,8 @@ namespace NinjaGui
         
         std::string& Text();
         
+        NinjaParty::Color& Color();
+        
         virtual void Draw(NinjaParty::SpriteBatch *spriteBatch);
 
     private:

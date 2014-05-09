@@ -15,6 +15,12 @@ namespace NinjaGui
               NinjaParty::TextureRegion textureRegion);
         ~Image();
         
+        void Change(NinjaParty::Texture *texture,
+                    NinjaParty::TextureRegion textureRegion);
+        
+        float& Rotation();
+        float& Scale();
+        
         virtual void Draw(NinjaParty::SpriteBatch *spriteBatch);
         
     private:

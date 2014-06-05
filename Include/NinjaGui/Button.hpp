@@ -9,23 +9,10 @@
 #include <NinjaParty/TextureRegion.hpp>
 
 #include "Control.hpp"
+#include "Events.hpp"
 
 namespace NinjaGui
 {
-    class ButtonClickedEvent : public NinjaParty::Event<ButtonClickedEvent>
-    {
-    public:
-        ButtonClickedEvent(int buttonId)
-        : buttonId(buttonId)
-        {
-        }
-        
-        int ButtonId() const { return buttonId; }
-        
-    private:
-        int buttonId;
-    };
-    
     class Button : public Control<Button>
     {
     public:
